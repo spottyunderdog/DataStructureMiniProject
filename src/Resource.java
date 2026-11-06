@@ -44,4 +44,9 @@ public class Resource {
     public int getPopularityScore() {
         return popularityScore;
     }
+
+    public boolean equals(Resource resource) {
+        return (this.id == resource.getId() || this.name == resource.getName() );
+    }
+
 }
