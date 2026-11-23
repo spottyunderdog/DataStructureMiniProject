@@ -1,4 +1,4 @@
-package DataStructures;
+package moduleH;
 
 public class CustomHashTable<K,V> {
 }

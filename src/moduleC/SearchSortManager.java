@@ -1,3 +1,5 @@
+package moduleC;
+
 import moduleA.DynamicArray;
 import moduleA.Resource;
 
