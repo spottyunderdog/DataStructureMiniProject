@@ -1,4 +1,5 @@
-import DataStructures.DynamicArray;
+import moduleA.DynamicArray;
+import moduleA.Resource;
 
 public class SearchSortManager {
     /**
@@ -11,7 +12,7 @@ public class SearchSortManager {
      *
      * @param catalog    The list of current Student Resources.
      * @param resourceId The id of the resource being searched for
-     * @return Resource with matching id
+     * @return moduleA.Resource with matching id
      */
     public Resource linearSearch(DynamicArray<Resource> catalog, int resourceId) {
         return null;
@@ -22,7 +23,7 @@ public class SearchSortManager {
      * If the list is unsorted, sort it, then search.
      *
      * @param catalog DynamicArray of Resources to be searched
-     * @param resourceId ID of Resource to be searched for
+     * @param resourceId ID of moduleA.Resource to be searched for
      * @return
      */
     public Resource binarySearch(DynamicArray<Resource> catalog, int resourceId) {

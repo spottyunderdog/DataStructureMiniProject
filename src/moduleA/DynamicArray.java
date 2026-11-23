@@ -1,23 +1,32 @@
-package DataStructures;
+package moduleA;
+
+import java.util.Arrays;
 
 public class DynamicArray<T> {
     private int size;
     private T[] array;
 
+    @SuppressWarnings("unchecked")
     public DynamicArray(int size){
+        if (size <= 0) throw new IllegalArgumentException("Size must be greater than 0");
         this.size = size;
         array = (T[]) new Object[size];
     }
 
     /**
      * Add an item to the array.
-     * wehn array is full, allocats a larger array and copys the exiting elements
+     * when array is full, allocates a larger array and copys the exiting elements
      * then sets then new array to current.
      * @param item the object added to the array.
      */
     public void add(T item) {
-        // TODO: Implement method.
-        array[0] = item;
+        if ( size == array.length) { resize(size * 2); }
+        array[size] = item;
+        size++;
+    }
+
+    private void resize(int newSize) {
+        array = Arrays.copyOf(array, newSize);
     }
 
     public T get(int index) {
@@ -44,6 +53,8 @@ public class DynamicArray<T> {
                 array[i] = array[i+1];
             }
         }
+        size--;
+        if ( size < array.length / 2 && size >= 5 ) resize((array.length / 2) + 2 );
     }
 
     public int size() {
@@ -51,12 +62,7 @@ public class DynamicArray<T> {
     }
 
     public boolean isEmpty(){
-        for ( T item : array ) {
-            if ( item.equals(null) ){
-                return true;
-            }
-        }
-        return false;
+        return size == 0;
     }
 
     public boolean contains(T item) {

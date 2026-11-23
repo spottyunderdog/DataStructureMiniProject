@@ -1,3 +1,5 @@
+package moduleA;
+
 public class Resource {
     private final int id;
     private final String name;
@@ -17,7 +19,7 @@ public class Resource {
         this.popularityScore = popularity;
     }
 
-    int getId() {
+    public int getId() {
         return id;
     }
 
@@ -46,7 +48,12 @@ public class Resource {
     }
 
     public boolean equals(Resource resource) {
-        return (this.id == resource.getId() || this.name == resource.getName() );
+        return (this.id == resource.getId() || this.name.equals(resource.getName()) );
+    }
+    @Override
+    public String toString() {
+        return String.format("Name: %s | ID %d | Category: %s | Building: %s | Available: %b | Popularity: %d",
+                 name, id, category, building, availability, popularityScore);
     }
 
 }
