@@ -3,13 +3,15 @@ package moduleA;
 import java.util.Arrays;
 
 public class DynamicArray<T> {
+    private static final int DEFAULT_CAPACITY = 4;
     private int size;
     private T[] array;
 
+    public DynamicArray() { this(DEFAULT_CAPACITY); }
     @SuppressWarnings("unchecked")
     public DynamicArray(int size){
-        if (size <= 0) throw new IllegalArgumentException("Size must be greater than 0");
-        this.size = size;
+        if (size <= 0) throw new IllegalArgumentException("Capcity must be greater than 0");
+        this.size = 0;
         array = (T[]) new Object[size];
     }
 
@@ -25,21 +27,13 @@ public class DynamicArray<T> {
         size++;
     }
 
-    private void resize(int newSize) {
-        array = Arrays.copyOf(array, newSize);
-    }
-
     public T get(int index) {
-        if ( index < 0 || index >= size ) {
-            throw new IndexOutOfBoundsException();
-        }
+        checkIndex(index);
         return array[index];
     }
 
     public void set(int index, T item) {
-        if ( index < 0 || index >= size ) {
-            throw new IndexOutOfBoundsException();
-        }
+        checkIndex(index);
         array[index] = item;
     }
 
@@ -76,6 +70,16 @@ public class DynamicArray<T> {
 
     public T[] toArray() {
         return array;
+    }
+
+    private void resize(int newCapacity) {
+        array = Arrays.copyOf(array, newCapacity); // allocates a new array and copies elements
+    }
+
+    private void checkIndex(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Invalid index " + index + " (size is " + size + ")");
+        }
     }
 
 }
