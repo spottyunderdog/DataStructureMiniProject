@@ -91,7 +91,7 @@ public class CustomLinkedList<T extends Identifiable> implements Iterable<T> {
             return;
         }
         int n = 1;
-        for (T item : this ) System.out.printf( "%d. %s%n:", n++, item);
+        for (T item : this ) System.out.printf( "%d. %s%n", n++, item);
     }
 
     @Override
@@ -108,7 +108,7 @@ public class CustomLinkedList<T extends Identifiable> implements Iterable<T> {
                 next = next.next;
                 return value;
             }
-        }
+        };
     }
 
 }
