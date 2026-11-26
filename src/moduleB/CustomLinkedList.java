@@ -1,7 +1,6 @@
 package moduleB;
 
 import moduleA.Identifiable;
-import moduleA.Resource;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -11,13 +10,13 @@ public class CustomLinkedList<T extends Identifiable> implements Iterable<T> {
         T data;
         Node prev;
         Node next;
-        Node(Resource data) { this.data = data; }
+        Node(T data) { this.data = data; }
     }
 
     Node head;
     Node tail;
     int size;
-    public boolean insertFront( Resource data) {
+    public boolean insertFront( T data) {
         if ( contains( data.getId()) ) return false;
         Node newNode = new Node(data);
         if ( head == null ) head = tail = newNode;
@@ -30,7 +29,7 @@ public class CustomLinkedList<T extends Identifiable> implements Iterable<T> {
         return true;
     }
 
-    public boolean insertBack( Resource data) {
+    public boolean insertBack( T data) {
         if ( contains( data.getId() ) ) return false;
         Node newNode = new Node(data);
         if ( tail == null ) head = tail = newNode;
