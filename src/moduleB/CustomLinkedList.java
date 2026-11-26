@@ -31,7 +31,7 @@ public class CustomLinkedList<T extends Identifiable> implements Iterable<T> {
     }
 
     public boolean insertBack( Resource data) {
-        if ( contains( data.getId() ) == null ) return false;
+        if ( contains( data.getId() ) ) return false;
         Node newNode = new Node(data);
         if ( tail == null ) head = tail = newNode;
         else {
