@@ -8,6 +8,7 @@ public class DynamicArray<T> {
     private T[] array;
 
     public DynamicArray() { this(DEFAULT_CAPACITY); }
+
     @SuppressWarnings("unchecked")
     public DynamicArray(int size){
         if (size <= 0) throw new IllegalArgumentException("Capcity must be greater than 0");
@@ -68,9 +69,16 @@ public class DynamicArray<T> {
         return false;
     }
 
-    public T[] toArray() {
-        return array;
+    public boolean contains(int resourceId) { return indexOfId(resourceId) >= 0; }
+
+    public int indexOfId(int resourceId) {
+        for ( int i = 0; i < size; i++ ) {
+            if ( array[i] instanceof Identifiable idItem && idItem.getId() == resourceId ) return i;
+        }
+        return -1;
     }
+
+    public Object[] toArray() { return Arrays.copyOf(array, size); }
 
     private void resize(int newCapacity) {
         array = Arrays.copyOf(array, newCapacity); // allocates a new array and copies elements
@@ -80,6 +88,14 @@ public class DynamicArray<T> {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Invalid index " + index + " (size is " + size + ")");
         }
+    }
+
+    @Override
+    public String toString() {
+        if ( size == 0 ) return "[]";
+        StringBuilder sb = new StringBuilder("[");
+        for ( int i = 0; i < size; i++ ) sb.append(i > 0 ? ", " : "").append(array[i]);
+        return sb.append("]").toString();
     }
 
 }
