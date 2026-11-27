@@ -85,6 +85,8 @@ public class CustomLinkedList<T extends Identifiable> implements Iterable<T> {
 
     public boolean isEmpty() { return size == 0; }
 
+    public int size() { return size; }
+
     public void display() {
         if ( isEmpty() ) {
             System.out.println(" (Empty");
