@@ -41,7 +41,7 @@ public class ResourceStack<T> {
             System.out.println(" (empty)");
             return;
         }
-        for ( int i = size - 1; i >= 0; i++ ) {
+        for ( int i = size - 1; i >= 0; i-- ) {
             System.out.println("  " + (i == size - 1 ? "-> " : "   ") + items[i]
                     + (i == size - 1 ? "   (top / current)" : ""));
         }
